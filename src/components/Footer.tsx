@@ -7,7 +7,7 @@ export function Footer() {
       <div className="container px-4 py-8 md:py-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
           <div>
-            <h3 className="font-semibold text-lg mb-3">GeekGearHub</h3>
+            <h3 className="font-semibold text-lg mb-3">eBazar</h3>
             <p className="text-muted-foreground text-sm">
               The trusted marketplace for tech enthusiasts and gamers to buy and sell used computer equipment.
             </p>
@@ -93,7 +93,7 @@ export function Footer() {
         </div>
         
         <div className="mt-8 pt-6 border-t text-center text-sm text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} GeekGearHub. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} eBazar. All rights reserved.</p>
         </div>
       </div>
     </footer>

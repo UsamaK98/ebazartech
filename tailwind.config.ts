@@ -63,12 +63,12 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				geek: {
-					'purple': '#9b87f5',
-					'purple-dark': '#7E69AB',
-					'purple-light': '#D6BCFA',
-					'dark': '#1A1F2C',
-					'gray': '#8E9196',
+				ebazar: {
+					'green': '#27AE60',
+					'green-dark': '#219653',
+					'green-light': '#6FCF97',
+					'dark': '#1A202C',
+					'gray': '#A0AEC0',
 				}
 			},
 			borderRadius: {

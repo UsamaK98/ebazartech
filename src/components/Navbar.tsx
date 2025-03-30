@@ -52,7 +52,7 @@ export function Navbar() {
       <div className="container flex h-16 items-center">
         <div className="flex items-center mr-4">
           <Link to="/" className="flex items-center gap-2">
-            <span className="font-bold text-xl text-geek-purple">GeekGear<span className="text-geek-purple-dark">Hub</span></span>
+            <span className="font-bold text-xl text-ebazar-green">eBazar<span className="text-ebazar-dark">Tech</span></span>
           </Link>
         </div>
 
@@ -68,7 +68,7 @@ export function Navbar() {
               <SheetContent side="left">
                 <div className="px-2 py-6">
                   <Link to="/" className="flex items-center gap-2 mb-6">
-                    <span className="font-bold text-xl text-geek-purple">GeekGear<span className="text-geek-purple-dark">Hub</span></span>
+                    <span className="font-bold text-xl text-ebazar-green">eBazar<span className="text-ebazar-dark">Tech</span></span>
                   </Link>
                   <nav>
                     <ul className="space-y-4">

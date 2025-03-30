@@ -38,9 +38,9 @@ export function ProductCard({
 }: ProductCardProps) {
   const getConditionColor = (condition: string) => {
     switch (condition) {
-      case "new": return "bg-green-500";
+      case "new": return "bg-emerald-500";
       case "like-new": return "bg-teal-500";
-      case "good": return "bg-blue-500";
+      case "good": return "bg-green-500";
       case "fair": return "bg-yellow-500";
       case "poor": return "bg-red-500";
       default: return "bg-gray-500";
@@ -53,13 +53,13 @@ export function ProductCard({
   });
 
   return (
-    <Card className="overflow-hidden transition-all hover:shadow-md">
+    <Card className="overflow-hidden transition-all duration-300 hover:shadow-lg rounded-xl border-transparent hover:border-primary/20">
       <Link to={`/product/${id}`}>
-        <div className="relative h-48 overflow-hidden">
+        <div className="relative h-52 overflow-hidden">
           <img 
             src={image} 
             alt={title} 
-            className="w-full h-full object-cover transition-transform hover:scale-105" 
+            className="w-full h-full object-cover transition-transform duration-300 hover:scale-105" 
           />
           <Badge 
             className={`absolute top-2 left-2 ${getConditionColor(condition)} text-white`}
@@ -69,13 +69,13 @@ export function ProductCard({
         </div>
       </Link>
       
-      <CardContent className="p-4">
-        <div className="flex justify-between items-start mb-2">
+      <CardContent className="p-5">
+        <div className="flex justify-between items-start mb-3">
           <div>
-            <h3 className="font-medium line-clamp-2 hover:text-primary">
+            <h3 className="font-medium line-clamp-2 hover:text-primary transition-colors">
               <Link to={`/product/${id}`}>{title}</Link>
             </h3>
-            <p className="text-lg font-semibold text-primary">{formatPrice(price)}</p>
+            <p className="text-lg font-semibold text-primary mt-1">{formatPrice(price)}</p>
           </div>
           <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-primary">
             <Heart className="h-5 w-5" />
@@ -89,9 +89,9 @@ export function ProductCard({
         </div>
       </CardContent>
       
-      <CardFooter className="px-4 py-3 bg-muted/50 flex items-center justify-between">
+      <CardFooter className="px-5 py-3 bg-muted/30 flex items-center justify-between">
         <div className="flex items-center gap-1.5">
-          <Link to={`/seller/${seller.id}`} className="text-sm font-medium hover:text-primary">
+          <Link to={`/seller/${seller.id}`} className="text-sm font-medium hover:text-primary transition-colors">
             {seller.name}
           </Link>
           {seller.verified && (
