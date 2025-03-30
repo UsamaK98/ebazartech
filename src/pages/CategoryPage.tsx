@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { Navbar } from "@/components/Navbar";
@@ -9,6 +8,7 @@ import {
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,
+  BreadcrumbPage,
 } from "@/components/ui/breadcrumb";
 import {
   Select,
@@ -21,7 +21,6 @@ import {
 export default function CategoryPage() {
   const { category } = useParams<{ category: string }>();
   
-  // Format category name for display
   const formatCategoryName = (slug: string) => {
     return slug
       .split('-')
@@ -31,7 +30,6 @@ export default function CategoryPage() {
   
   const displayCategory = category ? formatCategoryName(category) : "";
   
-  // Mock products data based on category
   const [products, setProducts] = useState<ProductCardProps[]>([
     {
       id: "1",
@@ -227,7 +225,6 @@ export default function CategoryPage() {
     },
   ]);
   
-  // Filter products based on category
   const [filteredProducts, setFilteredProducts] = useState(() => {
     if (!category) return products;
     return products.filter(product => product.category === category);
@@ -266,24 +263,19 @@ export default function CategoryPage() {
   const handleFilterChange = (filters: any) => {
     let filtered = products;
     
-    // Apply category filter
     if (category) {
       filtered = filtered.filter(product => product.category === category);
     }
     
-    // Apply price range filter
     if (filters.priceRange && filters.priceRange.length === 2) {
       filtered = filtered.filter(
         product => product.price >= filters.priceRange[0] && product.price <= filters.priceRange[1]
       );
     }
     
-    // Apply condition filter
     if (filters.conditions && filters.conditions.length > 0) {
       filtered = filtered.filter(product => filters.conditions.includes(product.condition));
     }
-    
-    // Apply brand filter (would require brand property in products)
     
     setFilteredProducts(filtered);
   };
@@ -298,8 +290,8 @@ export default function CategoryPage() {
             <BreadcrumbLink href="/">Home</BreadcrumbLink>
           </BreadcrumbItem>
           {category && (
-            <BreadcrumbItem isCurrentPage>
-              <BreadcrumbLink>{displayCategory}</BreadcrumbLink>
+            <BreadcrumbItem>
+              <BreadcrumbPage>{displayCategory}</BreadcrumbPage>
             </BreadcrumbItem>
           )}
         </Breadcrumb>
@@ -312,12 +304,10 @@ export default function CategoryPage() {
         </div>
         
         <div className="flex flex-col md:flex-row gap-8">
-          {/* Filters sidebar */}
           <div className="md:w-64 flex-shrink-0">
             <ProductFilters onFilterChange={handleFilterChange} />
           </div>
           
-          {/* Product listings */}
           <div className="flex-1">
             <div className="flex justify-between items-center mb-6">
               <h2 className="text-xl font-semibold">Products</h2>

@@ -11,6 +11,7 @@ import {
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,
+  BreadcrumbPage,
 } from "@/components/ui/breadcrumb";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -96,6 +97,22 @@ export default function ProductDetail() {
     setIsWishlisted(!isWishlisted);
   };
   
+  // Helper function to determine the badge class based on condition
+  const getConditionClass = (condition: string): string => {
+    switch (condition) {
+      case "new":
+        return "bg-green-500";
+      case "like-new":
+        return "bg-teal-500";
+      case "good":
+        return "bg-blue-500";
+      case "fair":
+        return "bg-yellow-500";
+      default:
+        return "bg-red-500";
+    }
+  };
+  
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
@@ -110,12 +127,12 @@ export default function ProductDetail() {
               {product.category}
             </BreadcrumbLink>
           </BreadcrumbItem>
-          <BreadcrumbItem isCurrentPage>
-            <BreadcrumbLink>
+          <BreadcrumbItem>
+            <BreadcrumbPage>
               {product.title.length > 30 
                 ? product.title.substring(0, 30) + '...' 
                 : product.title}
-            </BreadcrumbLink>
+            </BreadcrumbPage>
           </BreadcrumbItem>
         </Breadcrumb>
         
@@ -164,13 +181,7 @@ export default function ProductDetail() {
               </div>
               
               <div className="flex items-center space-x-2 mb-4">
-                <Badge className={`
-                  ${product.condition === "new" ? "bg-green-500" : 
-                    product.condition === "like-new" ? "bg-teal-500" : 
-                    product.condition === "good" ? "bg-blue-500" : 
-                    product.condition === "fair" ? "bg-yellow-500" : "bg-red-500"} 
-                  text-white
-                `}>
+                <Badge className={`${getConditionClass(product.condition)} text-white`}>
                   {product.condition.replace('-', ' ')}
                 </Badge>
                 <span className="text-muted-foreground text-sm">
