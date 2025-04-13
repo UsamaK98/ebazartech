@@ -1,8 +1,7 @@
 
 import { Link } from "react-router-dom";
-import { Search, ShoppingCart, User, Bell, Menu } from "lucide-react";
+import { ShoppingCart, User, Bell, Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { 
@@ -13,45 +12,28 @@ import {
 import { cn } from "@/lib/utils";
 
 export function Navbar() {
-  const [searchQuery, setSearchQuery] = useState("");
   const isMobile = useIsMobile();
-
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Search functionality will be implemented later
-    console.log("Searching for:", searchQuery);
-  };
 
   const NavItems = () => (
     <>
       <li>
-        <Link to="/category/desktop-pcs" className="text-foreground hover:text-primary transition-colors">
-          Desktop PCs
+        <Link to="/search" className="text-foreground hover:text-primary transition-colors">
+          Search
         </Link>
       </li>
       <li>
-        <Link to="/category/laptops" className="text-foreground hover:text-primary transition-colors">
-          Laptops
+        <Link to="/category/browse" className="text-foreground hover:text-primary transition-colors">
+          Browse Categories
         </Link>
       </li>
       <li>
-        <Link to="/category/components" className="text-foreground hover:text-primary transition-colors">
-          Components
+        <Link to="/about" className="text-foreground hover:text-primary transition-colors">
+          About
         </Link>
       </li>
       <li>
-        <Link to="/category/motherboards" className="text-foreground hover:text-primary transition-colors">
-          Motherboards
-        </Link>
-      </li>
-      <li>
-        <Link to="/category/graphics-cards" className="text-foreground hover:text-primary transition-colors">
-          Graphics Cards
-        </Link>
-      </li>
-      <li>
-        <Link to="/category/accessories" className="text-foreground hover:text-primary transition-colors">
-          Accessories
+        <Link to="/contact" className="text-foreground hover:text-primary transition-colors">
+          Contact Us
         </Link>
       </li>
     </>
@@ -91,9 +73,15 @@ export function Navbar() {
 
             <div className="flex items-center gap-2">
               <Button variant="ghost" size="icon" asChild>
-                <Link to="/search">
-                  <Search className="h-5 w-5" />
-                  <span className="sr-only">Search</span>
+                <Link to="/notifications">
+                  <Bell className="h-5 w-5" />
+                  <span className="sr-only">Notifications</span>
+                </Link>
+              </Button>
+              <Button variant="ghost" size="icon" asChild>
+                <Link to="/cart">
+                  <ShoppingCart className="h-5 w-5" />
+                  <span className="sr-only">Cart</span>
                 </Link>
               </Button>
               <Button variant="ghost" size="icon" asChild>
@@ -112,19 +100,6 @@ export function Navbar() {
               </ul>
             </nav>
 
-            <div className="flex-1 px-2">
-              <form onSubmit={handleSearch} className="relative">
-                <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-                <Input
-                  type="search"
-                  placeholder="Search for products..."
-                  className="pl-8 bg-background w-full md:w-2/3 lg:w-1/2"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                />
-              </form>
-            </div>
-
             <div className="ml-auto flex items-center gap-2">
               <Button variant="ghost" size="icon" asChild>
                 <Link to="/notifications">
@@ -142,11 +117,6 @@ export function Navbar() {
                 <Link to="/profile">
                   <User className="h-5 w-5" />
                   <span className="sr-only">Profile</span>
-                </Link>
-              </Button>
-              <Button asChild>
-                <Link to="/sell">
-                  Sell Item
                 </Link>
               </Button>
             </div>
