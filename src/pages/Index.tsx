@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Navbar } from "@/components/Navbar";
@@ -6,7 +5,21 @@ import { Footer } from "@/components/Footer";
 import { ProductCard, ProductCardProps } from "@/components/ProductCard";
 import { Button } from "@/components/ui/button";
 import { CategoryCard } from "@/components/CategoryCard";
-import { Monitor, Laptop, Cpu, HardDrive, Headphones, Mouse, Keyboard, CreditCard } from "lucide-react";
+import { 
+  Monitor, 
+  Laptop, 
+  Cpu, 
+  HardDrive, 
+  Headphones, 
+  Mouse, 
+  Keyboard, 
+  CreditCard,
+  CircuitBoard,
+  Fan,
+  Power,
+  Package,
+  Chip
+} from "lucide-react";
 
 export default function Index() {
   // Mock featured products data
@@ -77,7 +90,7 @@ export default function Index() {
     },
   ]);
 
-  // Categories with icons
+  // Categories with icons - updated with new categories
   const categories = [
     { title: "Desktop PCs", icon: <Monitor />, slug: "desktop-pcs", count: 458 },
     { title: "Laptops", icon: <Laptop />, slug: "laptops", count: 674 },
@@ -87,6 +100,11 @@ export default function Index() {
     { title: "Mice", icon: <Mouse />, slug: "mice", count: 203 },
     { title: "Keyboards", icon: <Keyboard />, slug: "keyboards", count: 246 },
     { title: "Graphics Cards", icon: <CreditCard />, slug: "graphics-cards", count: 329 },
+    { title: "RAM", icon: <Chip />, slug: "ram", count: 215 },
+    { title: "Motherboards", icon: <CircuitBoard />, slug: "motherboards", count: 183 },
+    { title: "PSUs", icon: <Power />, slug: "psus", count: 142 },
+    { title: "Fans", icon: <Fan />, slug: "fans", count: 98 },
+    { title: "PC Casings", icon: <Package />, slug: "pc-casings", count: 124 },
   ];
 
   return (

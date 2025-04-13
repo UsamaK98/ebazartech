@@ -40,6 +40,16 @@ export function Navbar() {
         </Link>
       </li>
       <li>
+        <Link to="/category/motherboards" className="text-foreground hover:text-primary transition-colors">
+          Motherboards
+        </Link>
+      </li>
+      <li>
+        <Link to="/category/graphics-cards" className="text-foreground hover:text-primary transition-colors">
+          Graphics Cards
+        </Link>
+      </li>
+      <li>
         <Link to="/category/accessories" className="text-foreground hover:text-primary transition-colors">
           Accessories
         </Link>

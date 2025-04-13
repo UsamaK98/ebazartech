@@ -2,6 +2,7 @@
 import { ReactNode } from "react";
 import { Link } from "react-router-dom";
 import { Card, CardContent } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
 
 interface CategoryCardProps {
   title: string;
@@ -13,7 +14,11 @@ interface CategoryCardProps {
 export function CategoryCard({ title, icon, slug, count }: CategoryCardProps) {
   return (
     <Link to={`/category/${slug}`}>
-      <Card className="category-card h-full hover:bg-accent/50 transition-all duration-300 border-transparent hover:border-primary/20 rounded-xl overflow-hidden">
+      <Card className={cn(
+        "category-card h-full hover:bg-accent/50 transition-all duration-300",
+        "border-transparent hover:border-primary/20 rounded-xl overflow-hidden",
+        "hover:shadow-md hover:shadow-primary/10"
+      )}>
         <CardContent className="flex flex-col items-center justify-center p-7 text-center">
           <div className="text-primary mb-5 text-4xl">
             {icon}
