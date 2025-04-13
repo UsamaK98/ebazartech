@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Navbar } from "@/components/Navbar";
@@ -18,7 +19,7 @@ import {
   Fan,
   Power,
   Package,
-  Chip
+  Memory
 } from "lucide-react";
 
 export default function Index() {
@@ -100,7 +101,7 @@ export default function Index() {
     { title: "Mice", icon: <Mouse />, slug: "mice", count: 203 },
     { title: "Keyboards", icon: <Keyboard />, slug: "keyboards", count: 246 },
     { title: "Graphics Cards", icon: <CreditCard />, slug: "graphics-cards", count: 329 },
-    { title: "RAM", icon: <Chip />, slug: "ram", count: 215 },
+    { title: "RAM", icon: <Memory />, slug: "ram", count: 215 },
     { title: "Motherboards", icon: <CircuitBoard />, slug: "motherboards", count: 183 },
     { title: "PSUs", icon: <Power />, slug: "psus", count: 142 },
     { title: "Fans", icon: <Fan />, slug: "fans", count: 98 },
