@@ -1,6 +1,6 @@
 
 import { Link } from "react-router-dom";
-import { Search, ShoppingCart, User, Bell, Menu } from "lucide-react";
+import { Search, GridIcon, Phone, Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
@@ -10,6 +10,14 @@ import {
   SheetContent,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
 
 export function Navbar() {
@@ -24,34 +32,76 @@ export function Navbar() {
 
   const NavItems = () => (
     <>
-      <li>
-        <Link to="/category/desktop-pcs" className="text-foreground hover:text-primary transition-colors">
-          Desktop PCs
+      <li className="flex items-center">
+        <Link to="/search" className="text-foreground hover:text-primary transition-colors flex items-center gap-2">
+          <Search className="h-4 w-4" />
+          Search
         </Link>
       </li>
-      <li>
-        <Link to="/category/laptops" className="text-foreground hover:text-primary transition-colors">
-          Laptops
-        </Link>
-      </li>
-      <li>
-        <Link to="/category/components" className="text-foreground hover:text-primary transition-colors">
-          Components
-        </Link>
-      </li>
-      <li>
-        <Link to="/category/motherboards" className="text-foreground hover:text-primary transition-colors">
-          Motherboards
-        </Link>
-      </li>
-      <li>
-        <Link to="/category/graphics-cards" className="text-foreground hover:text-primary transition-colors">
-          Graphics Cards
-        </Link>
-      </li>
-      <li>
-        <Link to="/category/accessories" className="text-foreground hover:text-primary transition-colors">
-          Accessories
+      {!isMobile && (
+        <li>
+          <NavigationMenu>
+            <NavigationMenuList>
+              <NavigationMenuItem>
+                <NavigationMenuTrigger className="bg-transparent">
+                  <span className="flex items-center gap-2">
+                    <GridIcon className="h-4 w-4" />
+                    Browse Categories
+                  </span>
+                </NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                    <li>
+                      <NavigationMenuLink asChild>
+                        <Link to="/category/desktop-pcs" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
+                          <div className="text-sm font-medium leading-none">Desktop PCs</div>
+                          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                            Pre-built desktop computers for work and gaming
+                          </p>
+                        </Link>
+                      </NavigationMenuLink>
+                    </li>
+                    <li>
+                      <NavigationMenuLink asChild>
+                        <Link to="/category/laptops" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
+                          <div className="text-sm font-medium leading-none">Laptops</div>
+                          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                            Portable computers for work and entertainment
+                          </p>
+                        </Link>
+                      </NavigationMenuLink>
+                    </li>
+                    <li>
+                      <NavigationMenuLink asChild>
+                        <Link to="/category/components" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
+                          <div className="text-sm font-medium leading-none">Components</div>
+                          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                            Computer parts and hardware for upgrades and builds
+                          </p>
+                        </Link>
+                      </NavigationMenuLink>
+                    </li>
+                    <li>
+                      <NavigationMenuLink asChild>
+                        <Link to="/category/accessories" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
+                          <div className="text-sm font-medium leading-none">Accessories</div>
+                          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                            Peripherals and add-ons to enhance your setup
+                          </p>
+                        </Link>
+                      </NavigationMenuLink>
+                    </li>
+                  </ul>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+            </NavigationMenuList>
+          </NavigationMenu>
+        </li>
+      )}
+      <li className="flex items-center">
+        <Link to="/contact" className="text-foreground hover:text-primary transition-colors flex items-center gap-2">
+          <Phone className="h-4 w-4" />
+          Contact Us
         </Link>
       </li>
     </>
@@ -89,17 +139,11 @@ export function Navbar() {
               </SheetContent>
             </Sheet>
 
-            <div className="flex items-center gap-2">
+            <div className="flex items-center">
               <Button variant="ghost" size="icon" asChild>
                 <Link to="/search">
                   <Search className="h-5 w-5" />
                   <span className="sr-only">Search</span>
-                </Link>
-              </Button>
-              <Button variant="ghost" size="icon" asChild>
-                <Link to="/profile">
-                  <User className="h-5 w-5" />
-                  <span className="sr-only">User</span>
                 </Link>
               </Button>
             </div>
@@ -123,32 +167,6 @@ export function Navbar() {
                   onChange={(e) => setSearchQuery(e.target.value)}
                 />
               </form>
-            </div>
-
-            <div className="ml-auto flex items-center gap-2">
-              <Button variant="ghost" size="icon" asChild>
-                <Link to="/notifications">
-                  <Bell className="h-5 w-5" />
-                  <span className="sr-only">Notifications</span>
-                </Link>
-              </Button>
-              <Button variant="ghost" size="icon" asChild>
-                <Link to="/cart">
-                  <ShoppingCart className="h-5 w-5" />
-                  <span className="sr-only">Cart</span>
-                </Link>
-              </Button>
-              <Button variant="ghost" size="icon" asChild>
-                <Link to="/profile">
-                  <User className="h-5 w-5" />
-                  <span className="sr-only">Profile</span>
-                </Link>
-              </Button>
-              <Button asChild>
-                <Link to="/sell">
-                  Sell Item
-                </Link>
-              </Button>
             </div>
           </>
         )}
